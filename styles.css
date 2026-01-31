@@ -393,6 +393,19 @@ h1 {
   }
 }
 
+/* Footer styling */
+.footer {
+  position: fixed;
+  bottom: 12px;
+  left: 0;
+  right: 0;
+  text-align: center;
+  font-size: 0.85rem;
+  color: #c11f5e;
+  opacity: 0.8;
+  z-index: 1;
+}
+
 /* Mobile responsiveness */
 @media (max-width: 768px) {
   .container {
