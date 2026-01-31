@@ -1,0 +1,54 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Be My Valentine 💖</title>
+    <!-- Link external stylesheet for styling -->
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <!-- Cute character that reacts to user choices -->
+    <div class="character" id="character">
+      <div class="character-face">
+        <div class="eyes">
+          <div class="eye left"></div>
+          <div class="eye right"></div>
+        </div>
+        <div class="mouth"></div>
+        <div class="blush left-blush"></div>
+        <div class="blush right-blush"></div>
+      </div>
+      <div class="ears">
+        <div class="ear left-ear"></div>
+        <div class="ear right-ear"></div>
+      </div>
+    </div>
+
+    <!-- Main container centers content vertically and horizontally -->
+    <main class="container">
+      <h1>Be My Valentine 💖</h1>
+      <p class="message" id="message">
+        You make my heart skip a beat. Will you be my Valentine?
+      </p>
+
+      <!-- Button row contains Yes and No buttons -->
+      <div class="button-row">
+        <button id="yesButton" class="btn btn-yes" type="button">Yes</button>
+        <button id="noButton" class="btn btn-no" type="button">No</button>
+      </div>
+    </main>
+
+    <!-- Decorative floating hearts for romantic theme -->
+    <div class="hearts" aria-hidden="true">
+      <span>❤</span>
+      <span>💖</span>
+      <span>❤</span>
+      <span>💗</span>
+      <span>❤</span>
+    </div>
+
+    <!-- Link external script for interactivity -->
+    <script src="script.js"></script>
+  </body>
+</html>
