@@ -362,3 +362,188 @@ h1 {
     opacity: 0;
   }
 }
+
+/* Mobile responsiveness */
+@media (max-width: 768px) {
+  .character {
+    top: 40px;
+  }
+
+  .character-face {
+    width: 80px;
+    height: 80px;
+  }
+
+  .ears {
+    top: -25px;
+  }
+
+  .ear {
+    width: 20px;
+    height: 50px;
+  }
+
+  .left-ear {
+    left: 10px;
+  }
+
+  .right-ear {
+    right: 10px;
+  }
+
+  .eyes {
+    top: 22px;
+    gap: 20px;
+  }
+
+  .eye {
+    width: 10px;
+    height: 14px;
+  }
+
+  .mouth {
+    width: 20px;
+    height: 15px;
+    border-width: 2px;
+    top: 40px;
+  }
+
+  .blush {
+    width: 15px;
+    height: 10px;
+    top: 35px;
+  }
+
+  .container {
+    width: calc(100% - 32px);
+    max-width: 90vw;
+    margin: 20px auto 20px;
+    padding: 32px 24px;
+    margin-top: 110px;
+    border-radius: 16px;
+  }
+
+  h1 {
+    font-size: 1.8rem;
+    margin-bottom: 8px;
+  }
+
+  .message {
+    font-size: 0.95rem;
+    margin-bottom: 24px;
+  }
+
+  .button-row {
+    gap: 12px;
+    flex-wrap: wrap;
+  }
+
+  .btn {
+    font-size: 0.9rem;
+    padding: 12px 20px;
+    min-width: 100px;
+  }
+
+  .btn-yes {
+    font-size: 1rem;
+    padding: 12px 24px;
+  }
+
+  .btn-no {
+    min-width: 80px;
+  }
+}
+
+@media (max-width: 480px) {
+  .character {
+    top: 20px;
+  }
+
+  .character-face {
+    width: 70px;
+    height: 70px;
+  }
+
+  .ears {
+    top: -20px;
+  }
+
+  .ear {
+    width: 18px;
+    height: 45px;
+  }
+
+  .left-ear {
+    left: 8px;
+  }
+
+  .right-ear {
+    right: 8px;
+  }
+
+  .eyes {
+    top: 20px;
+    gap: 16px;
+  }
+
+  .eye {
+    width: 8px;
+    height: 12px;
+  }
+
+  .mouth {
+    width: 18px;
+    height: 12px;
+    border-width: 2px;
+    top: 38px;
+  }
+
+  .blush {
+    width: 12px;
+    height: 8px;
+    top: 34px;
+  }
+
+  .container {
+    width: calc(100% - 20px);
+    margin: 12px auto 20px;
+    padding: 24px 16px;
+    margin-top: 100px;
+    border-radius: 12px;
+  }
+
+  h1 {
+    font-size: 1.4rem;
+    margin-bottom: 6px;
+  }
+
+  .message {
+    font-size: 0.85rem;
+    margin-bottom: 18px;
+  }
+
+  .button-row {
+    gap: 10px;
+    flex-direction: column;
+  }
+
+  .btn {
+    font-size: 0.85rem;
+    padding: 10px 16px;
+    width: 100%;
+  }
+
+  .btn-yes {
+    font-size: 0.9rem;
+    padding: 10px 16px;
+    width: 100%;
+  }
+
+  .btn-no {
+    width: 100%;
+  }
+
+  .hearts span {
+    font-size: 16px;
+  }
+}
