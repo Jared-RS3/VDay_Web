@@ -66,18 +66,17 @@ noButton.addEventListener("click", () => {
   // Calculate the usable viewport area for the button
   const buttonWidth = noButton.offsetWidth;
   const buttonHeight = noButton.offsetHeight;
-  const margin = 20;
-  const maxX = Math.max(margin, window.innerWidth - buttonWidth - margin);
-  const maxY = Math.max(margin, window.innerHeight - buttonHeight - margin);
+  const maxX = window.innerWidth - buttonWidth - 40;
+  const maxY = window.innerHeight - buttonHeight - 40;
 
   // Pick random coordinates within safe viewport boundaries
   const randomX = Math.max(
-    margin,
-    Math.min(maxX, Math.floor(Math.random() * (maxX - margin)) + margin),
+    20,
+    Math.min(maxX, Math.floor(Math.random() * maxX)),
   );
   const randomY = Math.max(
-    margin,
-    Math.min(maxY, Math.floor(Math.random() * (maxY - margin)) + margin),
+    20,
+    Math.min(maxY, Math.floor(Math.random() * maxY)),
   );
 
   // Apply the random position with high z-index to stay visible
