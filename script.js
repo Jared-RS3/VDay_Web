@@ -14,11 +14,11 @@ const noMessages = [
   "What if I kiss you more? 💋 Please?",
   "What about for a strawberry matcha? 🍓🍵",
   "I'll give you unlimited cuddles! 🤗",
+  "The bunny is crying now... look what you did 😢",
   "Okay but... what if I throw in some boba too? 🧋",
   "I'll even let you pick the movie tonight 🎬",
   "Come onnnnn, you know you want to 🥹",
   "I'll do the dishes for a whole week! 🧼",
-  "The bunny is crying now... look what you did 😢",
   "PLEASE PLEASE PLEASE PLEASE??? 🙏",
   "I'm running out of ideas here... 😅",
   "You're really gonna make me beg? Fine... PLEASE! 💝",
@@ -54,14 +54,30 @@ noButton.addEventListener("click", () => {
   const messageIndex = noClickCount % noMessages.length;
   messageElement.textContent = noMessages[messageIndex];
 
-  // Make character sad
-  character.className = "character sad";
+  // Make character sad, and crying from the 6th click onwards (when bunny starts crying)
+  if (noClickCount >= 5) {
+    character.className = "character sad crying";
+  } else {
+    character.className = "character sad";
+  }
 
   // Make Yes button grow bigger each time (classic meme style)
   const newSize = 1.15 + noClickCount * 0.15;
   const newPadding = 16 + noClickCount * 4;
   yesButton.style.fontSize = `${newSize}rem`;
-  yesButton.style.padding = `${newPadding}px ${newPadding * 2}px`;
+  
+  // Check if on mobile
+  const isMobile = window.innerWidth <= 768;
+  
+  if (isMobile) {
+    // On mobile: only increase height (vertical padding), lock width
+    yesButton.style.padding = `${newPadding}px 20px`;
+    yesButton.style.width = "100%";
+    yesButton.style.maxWidth = "100%";
+  } else {
+    // On desktop: normal growth
+    yesButton.style.padding = `${newPadding}px ${newPadding * 2}px`;
+  }
 
   // Calculate the usable viewport area for the button
   const buttonWidth = noButton.offsetWidth;
