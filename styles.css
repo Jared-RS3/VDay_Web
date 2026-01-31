@@ -328,7 +328,8 @@ h1 {
 .btn-no {
   background: var(--soft-pink);
   color: #a50e45;
-  position: relative; /* Allows JS to move it within the viewport */
+  position: relative;
+  z-index: 10000;
 }
 
 /* Hover animation for both buttons */

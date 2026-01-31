@@ -96,7 +96,7 @@ noButton.addEventListener("click", () => {
   noButton.style.position = "fixed";
   noButton.style.left = `${randomX}px`;
   noButton.style.top = `${randomY}px`;
-  noButton.style.zIndex = "9999";
+  noButton.style.zIndex = "10001";
 
   // Shrink the No button slightly each time
   if (noClickCount > 3) {
