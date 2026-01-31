@@ -66,24 +66,21 @@ noButton.addEventListener("click", () => {
   // Calculate the usable viewport area for the button
   const buttonWidth = noButton.offsetWidth;
   const buttonHeight = noButton.offsetHeight;
-  const maxX = window.innerWidth - buttonWidth - 40;
-  const maxY = window.innerHeight - buttonHeight - 40;
+  const padding = 15;
+  const minX = padding;
+  const maxX = window.innerWidth - buttonWidth - padding;
+  const minY = padding;
+  const maxY = window.innerHeight - buttonHeight - padding;
 
   // Pick random coordinates within safe viewport boundaries
-  const randomX = Math.max(
-    20,
-    Math.min(maxX, Math.floor(Math.random() * maxX)),
-  );
-  const randomY = Math.max(
-    20,
-    Math.min(maxY, Math.floor(Math.random() * maxY)),
-  );
+  const randomX = Math.floor(Math.random() * (maxX - minX + 1)) + minX;
+  const randomY = Math.floor(Math.random() * (maxY - minY + 1)) + minY;
 
   // Apply the random position with high z-index to stay visible
   noButton.style.position = "fixed";
   noButton.style.left = `${randomX}px`;
   noButton.style.top = `${randomY}px`;
-  noButton.style.zIndex = "1000";
+  noButton.style.zIndex = "9999";
 
   // Shrink the No button slightly each time
   if (noClickCount > 3) {
@@ -94,7 +91,14 @@ noButton.addEventListener("click", () => {
 
 // Confetti function for celebration
 function createConfetti() {
-  const colors = ["#ff2f6d", "#ff5c8a", "#ffb3d1", "#ffd4e5", "#ffea00", "#ff6b35"];
+  const colors = [
+    "#ff2f6d",
+    "#ff5c8a",
+    "#ffb3d1",
+    "#ffd4e5",
+    "#ffea00",
+    "#ff6b35",
+  ];
   const confettiCount = 50;
 
   // Regular falling confetti
@@ -118,7 +122,7 @@ function createConfetti() {
       setTimeout(() => confetti.remove(), 4000);
     }, i * 30);
   }
-  
+
   // Fireworks bursts
   const fireworksCount = 8;
   for (let i = 0; i < fireworksCount; i++) {
@@ -155,33 +159,41 @@ function createConfetti() {
 
 // Create a single firework burst
 function createFirework() {
-  const colors = ["#ff2f6d", "#ff5c8a", "#ffb3d1", "#ffd4e5", "#ffea00", "#ff6b35"];
+  const colors = [
+    "#ff2f6d",
+    "#ff5c8a",
+    "#ffb3d1",
+    "#ffd4e5",
+    "#ffea00",
+    "#ff6b35",
+  ];
   const particleCount = 30;
   const startX = Math.random() * window.innerWidth;
   const startY = Math.random() * (window.innerHeight * 0.6) + 100;
-  
+
   for (let i = 0; i < particleCount; i++) {
     const particle = document.createElement("div");
     const angle = (Math.PI * 2 * i) / particleCount;
     const velocity = 100 + Math.random() * 100;
     const tx = Math.cos(angle) * velocity;
     const ty = Math.sin(angle) * velocity;
-    
+
     particle.style.position = "fixed";
     particle.style.left = startX + "px";
     particle.style.top = startY + "px";
     particle.style.width = "8px";
     particle.style.height = "8px";
     particle.style.borderRadius = "50%";
-    particle.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
+    particle.style.backgroundColor =
+      colors[Math.floor(Math.random() * colors.length)];
     particle.style.zIndex = "1000";
     particle.style.pointerEvents = "none";
     particle.style.setProperty("--tx", tx + "px");
     particle.style.setProperty("--ty", ty + "px");
     particle.style.animation = `firework ${0.8 + Math.random() * 0.4}s ease-out forwards`;
-    
+
     document.body.appendChild(particle);
-    
+
     setTimeout(() => particle.remove(), 1500);
   }
 }
