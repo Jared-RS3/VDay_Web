@@ -11,19 +11,9 @@ let noClickCount = 0;
 const noMessages = [
   "You make my heart skip a beat. Will you be my Valentine?",
   "Babyyyy noooo 🥺 Are you sure?",
-  "What if I kiss you more? 💋 Please?",
+  "You're making the bunny cry! 😢 Please say yes?",
   "What about for a strawberry matcha? 🍓🍵",
-  "I'll give you unlimited cuddles! 🤗",
-  "The bunny is crying now... look what you did 😢",
-  "Okay but... what if I throw in some boba too? 🧋",
-  "I'll even let you pick the movie tonight 🎬",
-  "Come onnnnn, you know you want to 🥹",
-  "I'll do the dishes for a whole week! 🧼",
-  "PLEASE PLEASE PLEASE PLEASE??? 🙏",
-  "I'm running out of ideas here... 😅",
-  "You're really gonna make me beg? Fine... PLEASE! 💝",
-  "The bunny might actually pass out from sadness 😵",
-  "Okay I'll buy you TWO strawberry matchas 🍓🍓",
+  "No you can't say no. 💖",
 ];
 
 // Keep Yes button centered visually and make it grow
@@ -31,7 +21,7 @@ yesButton.addEventListener("click", () => {
   // Make character super excited and happy
   character.className = "character excited kissing";
   messageElement.textContent =
-    "YAY!! 💖 I knew you loved me! Best Valentine EVER!";
+    "YAY!! 💖 Now pick a mystery box to reveal your gift!";
   messageElement.style.fontSize = "1.3rem";
   messageElement.style.color = "#ff2f6d";
 
@@ -39,23 +29,165 @@ yesButton.addEventListener("click", () => {
   noButton.style.display = "none";
   yesButton.style.display = "none";
 
+  // Show mystery boxes
+  const mysteryBoxes = document.getElementById("mysteryBoxes");
+  mysteryBoxes.style.display = "block";
+  setTimeout(() => {
+    mysteryBoxes.classList.add("show");
+  }, 100);
+
+  // Hide the bunny character
+  character.style.opacity = "0";
+  character.style.transform = "translateX(-50%) scale(0.5)";
+  setTimeout(() => {
+    character.style.display = "none";
+  }, 500);
+
   // Reset the counter so clicking No again restarts the funny messages
   noClickCount = 0;
+});
 
-  // Add confetti effect
-  createConfetti();
+// Handle mystery box selection
+const mysteryBoxesEl = document.querySelectorAll(".mystery-box");
+mysteryBoxesEl.forEach((box) => {
+  box.addEventListener("click", function () {
+    const giftNum = this.dataset.gift;
+    const selectedBox = this;
+
+    // Prevent multiple clicks
+    mysteryBoxesEl.forEach((b) => (b.style.pointerEvents = "none"));
+
+    // Hide other boxes
+    mysteryBoxesEl.forEach((otherBox) => {
+      if (otherBox !== selectedBox) {
+        otherBox.style.opacity = "0";
+        otherBox.style.transform = "scale(0.5)";
+      }
+    });
+
+    // Move selected box to center
+    setTimeout(() => {
+      const boxesContainer = document.querySelector(".boxes-container");
+      const rect = selectedBox.getBoundingClientRect();
+      const containerRect = boxesContainer.getBoundingClientRect();
+
+      // Calculate center of viewport
+      const centerX = window.innerWidth / 2;
+      const centerY = window.innerHeight / 2;
+
+      // Calculate box center
+      const boxCenterX = rect.left + rect.width / 2;
+      const boxCenterY = rect.top + rect.height / 2;
+
+      // Calculate translation needed
+      const translateX = centerX - boxCenterX;
+      const translateY = centerY - boxCenterY;
+
+      selectedBox.style.transform = `translate(${translateX}px, ${translateY}px) scale(1.5)`;
+      selectedBox.style.zIndex = "1000";
+    }, 300);
+
+    // Open the box with animation
+    setTimeout(() => {
+      this.classList.add("opening");
+    }, 1000);
+
+    // Messages for each box
+    const messages = {
+      1: {
+        name: "My Beautiful Valentine",
+        text: [
+          "You are the sunshine that brightens my darkest days.",
+          "Every smile you give me is a treasure I hold close to my heart.",
+          "I am so grateful to have you in my life. You complete me.",
+        ],
+      },
+      2: {
+        name: "My Love",
+        text: [
+          "From the moment I met you, I knew you were special.",
+          "Your love has transformed my world into something magical.",
+          "Thank you for being my everything. I love you more each day.",
+        ],
+      },
+      3: {
+        name: "My One & Only",
+        text: [
+          "You make my heart skip a beat every single time I see you.",
+          "Being with you feels like coming home to where I belong.",
+          "You are my greatest adventure and my sweetest dream come true.",
+        ],
+      },
+    };
+
+    setTimeout(() => {
+      // Hide mystery boxes
+      document.getElementById("mysteryBoxes").style.opacity = "0";
+
+      setTimeout(() => {
+        document.getElementById("mysteryBoxes").style.display = "none";
+
+        // Show personalized love note
+        const loveNoteContainer = document.getElementById("loveNoteContainer");
+        const personName = document.getElementById("personName");
+        const noteMessage = document.getElementById("noteMessage");
+
+        personName.textContent = messages[giftNum].name;
+        noteMessage.innerHTML = messages[giftNum].text
+          .map((line) => `<p>${line}</p>`)
+          .join("");
+
+        loveNoteContainer.style.display = "flex";
+        setTimeout(() => {
+          loveNoteContainer.classList.add("show");
+        }, 50);
+      }, 600);
+    }, 1200);
+  });
+});
+
+// Close love note button
+document.getElementById("noteCloseBtn").addEventListener("click", () => {
+  const loveNoteContainer = document.getElementById("loveNoteContainer");
+  loveNoteContainer.classList.remove("show");
+
+  setTimeout(() => {
+    loveNoteContainer.style.display = "none";
+
+    // Show the bunny character again
+    character.style.display = "block";
+    setTimeout(() => {
+      character.style.opacity = "1";
+      character.style.transform = "translateX(-50%) scale(1)";
+    }, 50);
+
+    // Show final message
+    messageElement.textContent =
+      "You opened your heart and found love! 💖 Happy Valentine's Day!";
+    character.className = "character excited kissing";
+
+    // Trigger confetti
+    createConfetti();
+  }, 600);
 });
 
 // Move the No button to a random position and update messages/character
 noButton.addEventListener("click", () => {
   noClickCount++;
 
-  // Loop through messages - cycle back to start after reaching the end
-  const messageIndex = noClickCount % noMessages.length;
-  messageElement.textContent = noMessages[messageIndex];
+  // On the 4th click, hide the No button and show final message
+  if (noClickCount === 4) {
+    messageElement.textContent = noMessages[4];
+    noButton.style.display = "none";
+    character.className = "character excited";
+    return;
+  }
 
-  // Make character sad, and crying from the 6th click onwards (when bunny starts crying)
-  if (noClickCount >= 5) {
+  // Update message
+  messageElement.textContent = noMessages[noClickCount];
+
+  // Make character sad, and crying on the 2nd click
+  if (noClickCount === 2) {
     character.className = "character sad crying";
   } else {
     character.className = "character sad";
@@ -65,10 +197,10 @@ noButton.addEventListener("click", () => {
   const newSize = 1.15 + noClickCount * 0.15;
   const newPadding = 16 + noClickCount * 4;
   yesButton.style.fontSize = `${newSize}rem`;
-  
+
   // Check if on mobile
   const isMobile = window.innerWidth <= 768;
-  
+
   if (isMobile) {
     // On mobile: only increase height (vertical padding), lock width
     yesButton.style.padding = `${newPadding}px 20px`;
