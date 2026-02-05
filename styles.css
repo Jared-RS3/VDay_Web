@@ -1,3 +1,10 @@
+/*
+ * © 2026 DayBreak Tech-Innovations. All Rights Reserved.
+ * Proprietary and Confidential.
+ * Unauthorized copying, distribution, or use of this code is strictly prohibited.
+ * This is a demonstration version - contact DayBreak Tech-Innovations for licensing.
+ */
+
 /* Massive UGLY Watermark Styling */
 .watermark {
   position: fixed;
@@ -17,7 +24,7 @@
   transform: translate(-50%, -50%) rotate(-45deg);
   font-size: 7vw;
   color: rgba(255, 0, 0, 0.3);
-  text-shadow: 
+  text-shadow:
     3px 3px 0px rgba(0, 255, 0, 0.3),
     -3px -3px 0px rgba(0, 0, 255, 0.3);
 }
@@ -28,7 +35,9 @@
   transform: translate(-50%, -50%) rotate(15deg);
   font-size: 5vw;
   color: rgba(255, 0, 255, 0.4);
-  animation: uglyPulse 1.5s infinite, uglySpin 8s linear infinite;
+  animation:
+    uglyPulse 1.5s infinite,
+    uglySpin 8s linear infinite;
 }
 
 .watermark-3 {
@@ -37,7 +46,7 @@
   transform: translate(-50%, -50%) rotate(-15deg);
   font-size: 6vw;
   color: rgba(255, 255, 0, 0.5);
-  text-shadow: 
+  text-shadow:
     2px 2px 10px rgba(255, 0, 0, 0.8),
     -2px -2px 10px rgba(0, 255, 0, 0.8);
   animation: uglyBounce 1s infinite;
@@ -74,7 +83,9 @@
   border-radius: 30px;
   text-align: center;
   border: 3px solid var(--pink);
-  box-shadow: var(--shadow), 0 0 40px rgba(255, 92, 138, 0.4);
+  box-shadow:
+    var(--shadow),
+    0 0 40px rgba(255, 92, 138, 0.4);
   max-width: 500px;
   animation: gentleFloat 3s ease-in-out infinite;
 }
@@ -84,7 +95,7 @@
   color: var(--deep-pink);
   text-shadow: 2px 2px 4px rgba(255, 47, 109, 0.2);
   margin-bottom: 20px;
-  font-family: 'Comic Sans MS', cursive, sans-serif;
+  font-family: "Comic Sans MS", cursive, sans-serif;
 }
 
 .popup-content p {
@@ -117,28 +128,54 @@
 
 /* Ugly Animations */
 @keyframes uglyPulse {
-  0%, 100% { opacity: 0.3; }
-  50% { opacity: 0.7; }
+  0%,
+  100% {
+    opacity: 0.3;
+  }
+  50% {
+    opacity: 0.7;
+  }
 }
 
 @keyframes uglySpin {
-  from { transform: translate(-50%, -50%) rotate(0deg); }
-  to { transform: translate(-50%, -50%) rotate(360deg); }
+  from {
+    transform: translate(-50%, -50%) rotate(0deg);
+  }
+  to {
+    transform: translate(-50%, -50%) rotate(360deg);
+  }
 }
 
 @keyframes uglyBounce {
-  0%, 100% { transform: translate(-50%, -50%) rotate(-15deg) scale(1); }
-  50% { transform: translate(-50%, -50%) rotate(-15deg) scale(1.2); }
+  0%,
+  100% {
+    transform: translate(-50%, -50%) rotate(-15deg) scale(1);
+  }
+  50% {
+    transform: translate(-50%, -50%) rotate(-15deg) scale(1.2);
+  }
 }
 
 @keyframes uglyFlash {
-  0%, 50%, 100% { opacity: 1; }
-  25%, 75% { opacity: 0.3; }
+  0%,
+  50%,
+  100% {
+    opacity: 1;
+  }
+  25%,
+  75% {
+    opacity: 0.3;
+  }
 }
 
 @keyframes gentleFloat {
-  0%, 100% { transform: translateY(0px); }
-  50% { transform: translateY(-10px); }
+  0%,
+  100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
 }
 
 /* Base page styling for a romantic theme */
@@ -1039,7 +1076,7 @@ h1 {
   .mystery-box:hover .box-lid {
     top: 20px;
   }
-  
+
   .mystery-boxes {
     margin-top: 20px;
     padding-bottom: 15px;
@@ -1048,17 +1085,17 @@ h1 {
   .mystery-box:last-child {
     margin-bottom: 0;
   }
-  
+
   .container {
     max-height: 90vh;
     overflow: visible;
   }
-  
+
   h1 {
     font-size: 2rem;
     margin-bottom: 8px;
   }
-  
+
   .message {
     font-size: 1rem;
     margin-bottom: 12px;

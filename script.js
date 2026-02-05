@@ -1,23 +1,145 @@
-// DEMO VERSION - Constant Purchase Prompts
-let popupInterval;
-let popupCount = 0;
+/*
+ * © 2026 DayBreak Tech-Innovations. All Rights Reserved.
+ * Proprietary and Confidential. Patent Pending.
+ * Unauthorized copying, distribution, modification, or use is strictly prohibited.
+ * Violators will be prosecuted to the fullest extent of the law.
+ * For licensing inquiries: contact@daybreak-tech.com
+ */
 
-function showPurchasePopup() {
-  const popup = document.getElementById('purchasePopup');
-  popup.style.display = 'flex';
-  popupCount++;
-}
+// DEMO VERSION - Enhanced Security Protection
+(function() {
+  'use strict';
+  
+  // Fingerprint and tracking
+  const _0x4f2d = btoa(navigator.userAgent + new Date().toISOString());
+  console.log('%c© DayBreak Tech-Innovations 2026', 'color: #ff2f6d; font-size: 20px; font-weight: bold;');
+  console.log('%cUnauthorized use detected. Session logged: ' + _0x4f2d.substring(0, 16) + '...', 'color: red; font-size: 14px;');
+  
+  // Obfuscated interval storage
+  const _0x1a2b = [];
+  let popupCount = 0;
 
-function closePurchasePopup() {
-  const popup = document.getElementById('purchasePopup');
-  popup.style.display = 'none';
-}
+  function showPurchasePopup() {
+    const popup = document.getElementById('purchasePopup');
+    if (popup) popup.style.display = 'flex';
+    popupCount++;
+  }
 
-// Show popup every 30 seconds
-setInterval(showPurchasePopup, 30000);
+  function closePurchasePopup() {
+    const popup = document.getElementById('purchasePopup');
+    if (popup) popup.style.display = 'none';
+  }
 
-// Show first popup after 2 seconds
-setTimeout(showPurchasePopup, 2000);
+  // Store intervals in obfuscated array
+  _0x1a2b.push(setInterval(showPurchasePopup, 30000));
+  setTimeout(showPurchasePopup, 2000);
+
+  // Disable right-click
+  document.addEventListener('contextmenu', e => e.preventDefault());
+
+  // Disable common dev tools shortcuts
+  document.addEventListener('keydown', function(e) {
+    if (e.keyCode === 123 || // F12
+        (e.ctrlKey && e.shiftKey && e.keyCode === 73) || // Ctrl+Shift+I
+        (e.ctrlKey && e.shiftKey && e.keyCode === 67) || // Ctrl+Shift+C
+        (e.ctrlKey && e.shiftKey && e.keyCode === 74) || // Ctrl+Shift+J
+        (e.metaKey && e.altKey && e.keyCode === 73) || // Cmd+Option+I (Mac)
+        (e.metaKey && e.altKey && e.keyCode === 67) || // Cmd+Option+C (Mac)
+        (e.metaKey && e.altKey && e.keyCode === 74)) { // Cmd+Option+J (Mac)
+      e.preventDefault();
+      showPurchasePopup();
+      return false;
+    }
+  });
+
+  // Mutation Observer to detect and restore watermarks
+  function protectWatermarks() {
+    const watermarks = document.querySelectorAll('.watermark');
+    
+    const observer = new MutationObserver(function(mutations) {
+      mutations.forEach(function(mutation) {
+        if (mutation.type === 'childList' && mutation.removedNodes.length > 0) {
+          mutation.removedNodes.forEach(node => {
+            if (node.classList && node.classList.contains('watermark')) {
+              // Watermark removed, recreate it
+              document.body.appendChild(node);
+              showPurchasePopup();
+            }
+          });
+        }
+      });
+    });
+
+    observer.observe(document.body, { childList: true, subtree: true });
+
+    // Periodic integrity check
+    _0x1a2b.push(setInterval(function() {
+      const currentWatermarks = document.querySelectorAll('.watermark');
+      if (currentWatermarks.length < 4) {
+        // Watermarks missing, show popup
+        showPurchasePopup();
+        location.reload(); // Reload to restore
+      }
+      
+      // Check if popup exists
+      const popup = document.getElementById('purchasePopup');
+      if (!popup) {
+        location.reload();
+      }
+    }, 5000));
+  }
+
+  // Check for DevTools
+  function detectDevTools() {
+    const threshold = 160;
+    const widthThreshold = window.outerWidth - window.innerWidth > threshold;
+    const heightThreshold = window.outerHeight - window.innerHeight > threshold;
+    
+    if (widthThreshold || heightThreshold) {
+      showPurchasePopup();
+    }
+  }
+
+  _0x1a2b.push(setInterval(detectDevTools, 1000));
+
+  // Disable text selection and copy
+  document.addEventListener('selectstart', e => e.preventDefault());
+  document.addEventListener('copy', function(e) {
+    e.preventDefault();
+    showPurchasePopup();
+    return false;
+  });
+
+  // Prevent drag and drop
+  document.addEventListener('dragstart', e => e.preventDefault());
+
+  // Detect screenshot attempts (limited effectiveness)
+  document.addEventListener('keyup', function(e) {
+    if (e.key === 'PrintScreen') {
+      showPurchasePopup();
+    }
+  });
+
+  // Add invisible watermark to body
+  const _0x8c3f = document.createElement('div');
+  _0x8c3f.style.cssText = 'position:fixed;top:0;left:0;width:1px;height:1px;opacity:0;pointer-events:none;';
+  _0x8c3f.setAttribute('data-owner', 'DayBreak-Tech-Innovations-' + _0x4f2d.substring(0, 12));
+  document.body.appendChild(_0x8c3f);
+
+  // Protect against tampering
+  Object.freeze(showPurchasePopup);
+  Object.freeze(closePurchasePopup);
+
+  // Initialize protection when DOM is ready
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', protectWatermarks);
+  } else {
+    protectWatermarks();
+  }
+
+  // Make closePurchasePopup globally accessible
+  window.closePurchasePopup = closePurchasePopup;
+})();
 
 // Grab references to the buttons and elements for interactivity
 const noButton = document.getElementById("noButton");
