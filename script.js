@@ -105,9 +105,11 @@
   // Check for DevTools (only on desktop)
   function detectDevTools() {
     // Skip on mobile devices
-    const isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent) || window.innerWidth <= 768;
+    const isMobile =
+      /iPhone|iPad|iPod|Android/i.test(navigator.userAgent) ||
+      window.innerWidth <= 768;
     if (isMobile) return;
-    
+
     const threshold = 160;
     const widthThreshold = window.outerWidth - window.innerWidth > threshold;
     const heightThreshold = window.outerHeight - window.innerHeight > threshold;

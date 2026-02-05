@@ -1103,26 +1103,74 @@ h1 {
 
   /* Love note mobile */
   .love-note {
-    width: 95%;
-    padding: 35px 25px;
+    width: 85%;
+    max-width: 320px;
+    padding: 25px 20px;
     margin: 20px;
   }
 
   .note-to {
-    font-size: 1.6rem;
+    font-size: 1.4rem;
   }
 
   .note-message p {
-    font-size: 1rem;
+    font-size: 0.95rem;
+    margin-bottom: 12px;
   }
 
   .signature-name {
-    font-size: 1.2rem;
+    font-size: 1.1rem;
   }
 
   .note-close-btn {
-    padding: 14px 32px;
+    padding: 12px 28px;
+    font-size: 0.95rem;
+  }
+  
+  .note-header-deco {
+    gap: 20px;
+    margin-bottom: 15px;
+  }
+  
+  .heart-deco {
+    font-size: 1.5rem;
+  }
+  
+  .note-divider {
+    margin: 15px 0;
+  }
+  
+  .note-message {
+    margin: 20px 0;
+  }
+  
+  .note-signature {
+    margin-top: 25px;
+  }
+  
+  /* Demo popup mobile styling */
+  .popup-content {
+    max-width: 320px;
+    width: 85%;
+    padding: 30px 20px;
+    border-radius: 20px;
+  }
+  
+  .popup-content h2 {
+    font-size: 1.8rem;
+    margin-bottom: 15px;
+  }
+  
+  .popup-content p {
     font-size: 1rem;
+    margin: 10px 0;
+    line-height: 1.4;
+  }
+  
+  .popup-btn {
+    padding: 12px 30px;
+    font-size: 1rem;
+    margin-top: 15px;
   }
 }
 
