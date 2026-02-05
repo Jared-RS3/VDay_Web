@@ -1030,56 +1030,56 @@ h1 {
   /* Mystery boxes mobile layout */
   .boxes-container {
     grid-template-columns: 1fr !important;
-    gap: 12px;
-    padding: 0 20px 20px 20px;
-    max-height: 55vh;
+    gap: 8px;
+    padding: 0 20px 15px 20px;
+    max-height: 50vh;
     overflow-y: auto;
     overflow-x: hidden;
   }
 
   .boxes-title {
-    font-size: 1.3rem;
-    margin-bottom: 12px;
+    font-size: 1.2rem;
+    margin-bottom: 10px;
   }
 
   .mystery-box {
-    height: 120px;
-    max-width: 120px;
+    height: 100px;
+    max-width: 100px;
     margin: 0 auto;
   }
 
   /* Keep box elements properly sized on mobile */
   .box-body {
     width: 100%;
-    height: 85px;
+    height: 70px;
   }
 
   .box-lid {
     width: 110%;
-    height: 24px;
-    top: 28px;
+    height: 20px;
+    top: 24px;
     left: -5%;
   }
 
   .box-ribbon-v {
-    width: 16px;
+    width: 14px;
   }
 
   .box-ribbon-h {
-    height: 16px;
+    height: 14px;
   }
 
   .box-sparkles span {
-    font-size: 0.9rem;
+    font-size: 0.8rem;
   }
 
   .mystery-box:hover .box-lid {
-    top: 20px;
+    top: 18px;
   }
 
   .mystery-boxes {
-    margin-top: 15px;
-    padding-bottom: 50px;
+    margin-top: 12px;
+    padding-bottom: 10px;
   }
 
   .mystery-box:last-child {
@@ -1087,9 +1087,9 @@ h1 {
   }
 
   .container {
-    max-height: 75vh;
+    max-height: 68vh;
     overflow: visible;
-    padding-bottom: 15px;
+    padding-bottom: 12px;
   }
 
   h1 {
