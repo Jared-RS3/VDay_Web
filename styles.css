@@ -1,3 +1,146 @@
+/* Massive UGLY Watermark Styling */
+.watermark {
+  position: fixed;
+  font-weight: 900;
+  white-space: nowrap;
+  pointer-events: none;
+  z-index: 9999;
+  user-select: none;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  animation: uglyPulse 2s infinite;
+}
+
+.watermark-1 {
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) rotate(-45deg);
+  font-size: 7vw;
+  color: rgba(255, 0, 0, 0.3);
+  text-shadow: 
+    3px 3px 0px rgba(0, 255, 0, 0.3),
+    -3px -3px 0px rgba(0, 0, 255, 0.3);
+}
+
+.watermark-2 {
+  top: 20%;
+  left: 50%;
+  transform: translate(-50%, -50%) rotate(15deg);
+  font-size: 5vw;
+  color: rgba(255, 0, 255, 0.4);
+  animation: uglyPulse 1.5s infinite, uglySpin 8s linear infinite;
+}
+
+.watermark-3 {
+  top: 80%;
+  left: 50%;
+  transform: translate(-50%, -50%) rotate(-15deg);
+  font-size: 6vw;
+  color: rgba(255, 255, 0, 0.5);
+  text-shadow: 
+    2px 2px 10px rgba(255, 0, 0, 0.8),
+    -2px -2px 10px rgba(0, 255, 0, 0.8);
+  animation: uglyBounce 1s infinite;
+}
+
+.watermark-4 {
+  top: 10%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 4vw;
+  color: rgba(255, 69, 0, 0.6);
+  text-shadow: 0 0 20px rgba(255, 0, 0, 0.9);
+  animation: uglyFlash 0.5s infinite;
+}
+
+/* Purchase Popup Styling */
+.purchase-popup {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(255, 92, 138, 0.95);
+  z-index: 99999;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  backdrop-filter: blur(10px);
+}
+
+.popup-content {
+  background: linear-gradient(135deg, var(--soft-pink), var(--white));
+  padding: 50px;
+  border-radius: 30px;
+  text-align: center;
+  border: 3px solid var(--pink);
+  box-shadow: var(--shadow), 0 0 40px rgba(255, 92, 138, 0.4);
+  max-width: 500px;
+  animation: gentleFloat 3s ease-in-out infinite;
+}
+
+.popup-content h2 {
+  font-size: 2.5rem;
+  color: var(--deep-pink);
+  text-shadow: 2px 2px 4px rgba(255, 47, 109, 0.2);
+  margin-bottom: 20px;
+  font-family: 'Comic Sans MS', cursive, sans-serif;
+}
+
+.popup-content p {
+  font-size: 1.3rem;
+  color: var(--deep-pink);
+  font-weight: 600;
+  margin: 15px 0;
+  line-height: 1.6;
+}
+
+.popup-btn {
+  background: var(--pink);
+  color: var(--white);
+  border: none;
+  padding: 15px 40px;
+  font-size: 1.2rem;
+  font-weight: bold;
+  cursor: pointer;
+  margin-top: 20px;
+  border-radius: 50px;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 15px rgba(255, 92, 138, 0.3);
+}
+
+.popup-btn:hover {
+  background: var(--deep-pink);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(255, 47, 109, 0.4);
+}
+
+/* Ugly Animations */
+@keyframes uglyPulse {
+  0%, 100% { opacity: 0.3; }
+  50% { opacity: 0.7; }
+}
+
+@keyframes uglySpin {
+  from { transform: translate(-50%, -50%) rotate(0deg); }
+  to { transform: translate(-50%, -50%) rotate(360deg); }
+}
+
+@keyframes uglyBounce {
+  0%, 100% { transform: translate(-50%, -50%) rotate(-15deg) scale(1); }
+  50% { transform: translate(-50%, -50%) rotate(-15deg) scale(1.2); }
+}
+
+@keyframes uglyFlash {
+  0%, 50%, 100% { opacity: 1; }
+  25%, 75% { opacity: 0.3; }
+}
+
+@keyframes gentleFloat {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-10px); }
+}
+
 /* Base page styling for a romantic theme */
 :root {
   --pink: #ff5c8a;
@@ -437,13 +580,18 @@ h1 {
   grid-template-columns: repeat(3, 1fr);
   gap: 40px;
   perspective: 1500px;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
 }
 
 /* Individual Mystery Box */
 .mystery-box {
   position: relative;
   width: 100%;
+  max-width: 250px;
   height: 200px;
+  margin: 0 auto;
   cursor: pointer;
   transform-style: preserve-3d;
   transition:
@@ -834,7 +982,8 @@ h1 {
     margin-right: auto;
     margin-bottom: 16px;
     max-width: calc(100vw - 32px);
-    padding: 32px 20px;
+    padding: 24px 20px 20px 20px;
+    min-height: auto;
   }
 
   .btn-yes {
@@ -843,16 +992,76 @@ h1 {
 
   /* Mystery boxes mobile layout */
   .boxes-container {
-    grid-template-columns: 1fr;
-    gap: 30px;
+    grid-template-columns: 1fr !important;
+    gap: 12px;
+    padding: 0 20px 20px 20px;
+    max-height: 55vh;
+    overflow-y: auto;
+    overflow-x: hidden;
   }
 
   .boxes-title {
-    font-size: 1.6rem;
+    font-size: 1.3rem;
+    margin-bottom: 12px;
   }
 
   .mystery-box {
-    height: 180px;
+    height: 120px;
+    max-width: 120px;
+    margin: 0 auto;
+  }
+
+  /* Keep box elements properly sized on mobile */
+  .box-body {
+    width: 100%;
+    height: 85px;
+  }
+
+  .box-lid {
+    width: 110%;
+    height: 24px;
+    top: 28px;
+    left: -5%;
+  }
+
+  .box-ribbon-v {
+    width: 16px;
+  }
+
+  .box-ribbon-h {
+    height: 16px;
+  }
+
+  .box-sparkles span {
+    font-size: 0.9rem;
+  }
+
+  .mystery-box:hover .box-lid {
+    top: 20px;
+  }
+  
+  .mystery-boxes {
+    margin-top: 20px;
+    padding-bottom: 15px;
+  }
+
+  .mystery-box:last-child {
+    margin-bottom: 0;
+  }
+  
+  .container {
+    max-height: 90vh;
+    overflow: visible;
+  }
+  
+  h1 {
+    font-size: 2rem;
+    margin-bottom: 8px;
+  }
+  
+  .message {
+    font-size: 1rem;
+    margin-bottom: 12px;
   }
 
   /* Love note mobile */
@@ -885,5 +1094,56 @@ h1 {
   .container {
     margin-left: auto;
     margin-right: auto;
+  }
+}
+
+/* Tablet responsiveness for mystery boxes */
+@media (max-width: 992px) and (min-width: 769px) {
+  .boxes-container {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 25px;
+    padding: 0 20px;
+  }
+
+  .mystery-box {
+    height: 180px;
+    max-width: 220px;
+  }
+
+  .boxes-title {
+    font-size: 1.8rem;
+  }
+}
+
+/* Small tablets - 2 column layout */
+@media (max-width: 768px) and (min-width: 481px) {
+  .boxes-container {
+    grid-template-columns: 1fr !important;
+    gap: 25px;
+    max-height: 65vh;
+    overflow-y: auto;
+  }
+
+  .mystery-box {
+    max-width: 240px;
+    height: 160px;
+    margin: 0 auto;
+  }
+
+  .boxes-title {
+    font-size: 1.6rem;
+  }
+
+  .box-body {
+    height: 120px;
+  }
+
+  .box-lid {
+    height: 32px;
+    top: 40px;
+  }
+
+  .mystery-box:hover .box-lid {
+    top: 28px;
   }
 }

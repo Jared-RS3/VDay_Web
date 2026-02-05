@@ -8,6 +8,28 @@
     <link rel="stylesheet" href="styles.css" />
   </head>
   <body>
+    <!-- Massive Ugly Watermarks -->
+    <div class="watermark watermark-1">DayBreak Tech-Innovations</div>
+    <div class="watermark watermark-2">DayBreak Tech-Innovations</div>
+    <div class="watermark watermark-3">DEMO VERSION</div>
+    <div class="watermark watermark-4">PURCHASE FULL VERSION</div>
+
+    <!-- Purchase Popup Overlay -->
+    <div class="purchase-popup" id="purchasePopup">
+      <div class="popup-content">
+        <h2>DEMO VERSION</h2>
+        <p>This is a demo version only!</p>
+        <p>
+          <strong
+            >Purchase the full version from DayBreak Tech-Innovations</strong
+          >
+        </p>
+        <button onclick="closePurchasePopup()" class="popup-btn">
+          Close (for now)
+        </button>
+      </div>
+    </div>
+
     <!-- Cute character that reacts to user choices -->
     <div class="character" id="character">
       <div class="character-face">

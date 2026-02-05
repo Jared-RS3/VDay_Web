@@ -1,3 +1,24 @@
+// DEMO VERSION - Constant Purchase Prompts
+let popupInterval;
+let popupCount = 0;
+
+function showPurchasePopup() {
+  const popup = document.getElementById('purchasePopup');
+  popup.style.display = 'flex';
+  popupCount++;
+}
+
+function closePurchasePopup() {
+  const popup = document.getElementById('purchasePopup');
+  popup.style.display = 'none';
+}
+
+// Show popup every 30 seconds
+setInterval(showPurchasePopup, 30000);
+
+// Show first popup after 2 seconds
+setTimeout(showPurchasePopup, 2000);
+
 // Grab references to the buttons and elements for interactivity
 const noButton = document.getElementById("noButton");
 const yesButton = document.getElementById("yesButton");
